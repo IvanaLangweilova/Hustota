@@ -49,8 +49,88 @@
     .object{
       position:absolute;left:50%;transform:translateX(-50%);width:84px;height:84px;border-radius:16px;background:#f97316;
       border:4px solid rgba(15,23,42,.35);transition:top .8s ease,background .4s ease,border-radius .3s ease;
-      display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-weight:bold;color:#0f172a;
-      padding:6px;box-shadow:0 8px 20px rgba(15,23,42,.18);z-index:4;
+      display:flex;align-items:flex-end;justify-content:center;text-align:center;font-size:11px;font-weight:bold;color:#0f172a;
+      padding:6px;box-shadow:0 8px 20px rgba(15,23,42,.18);z-index:4;overflow:visible;
+    }
+    .obj-label{
+      position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);
+      background:rgba(255,255,255,.92);border:1px solid rgba(15,23,42,.15);border-radius:999px;
+      padding:2px 8px;font-size:11px;font-weight:bold;white-space:nowrap;
+    }
+    .multi-label{
+      position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);
+      background:rgba(255,255,255,.9);border:1px solid rgba(15,23,42,.15);border-radius:999px;
+      padding:1px 6px;font-size:9px;font-weight:bold;white-space:nowrap;
+    }
+
+    /* materiály – hlavní těleso i více těles */
+    .mat-polystyren{
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,.95) 0 2px, transparent 3px),
+        radial-gradient(circle at 52% 34%, rgba(255,255,255,.95) 0 2px, transparent 3px),
+        radial-gradient(circle at 72% 18%, rgba(255,255,255,.95) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 64%, rgba(255,255,255,.95) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,.95) 0 2px, transparent 3px),
+        linear-gradient(135deg,#f8fafc,#e2e8f0);
+      border-radius:10px !important;
+    }
+
+    .mat-drevo{
+      width:88px;height:42px;border-radius:999px !important;
+      background:
+        radial-gradient(circle at 14% 50%, #d9a066 0 8px, #8a5a2b 9px 10px, transparent 11px),
+        radial-gradient(circle at 86% 50%, #d9a066 0 8px, #8a5a2b 9px 10px, transparent 11px),
+        repeating-linear-gradient(90deg,#8b5a2b 0 12px,#996235 12px 24px,#7a4b24 24px 36px);
+      border-color:#5b3718 !important;
+      top:auto;
+    }
+
+    .mat-led{
+      background:linear-gradient(135deg,#e0f2fe,#bfdbfe 55%,#93c5fd);
+      border-radius:50% !important;
+      box-shadow:0 0 0 2px rgba(255,255,255,.5) inset, 0 8px 20px rgba(15,23,42,.18);
+    }
+
+    .mat-jablko{
+      background:radial-gradient(circle at 40% 30%, #fb7185 0 16px, #ef4444 17px 45px, #b91c1c 46px);
+      border-radius:50% !important;
+    }
+    .mat-jablko::before{
+      content:"";
+      position:absolute;top:-8px;left:44px;width:4px;height:14px;background:#6b4f2a;border-radius:3px;
+      transform:rotate(-12deg);
+    }
+    .mat-jablko::after{
+      content:"";
+      position:absolute;top:-10px;left:48px;width:18px;height:10px;background:#22c55e;
+      border-radius:18px 0 18px 0;transform:rotate(-28deg);
+    }
+
+    .mat-plast{
+      background:linear-gradient(135deg,#fbbf24,#60a5fa,#34d399,#f472b6);
+      border-radius:44% 56% 54% 46% / 37% 42% 58% 63% !important;
+    }
+
+    .mat-voda{
+      background:linear-gradient(135deg,#7dd3fc,#38bdf8,#0ea5e9);
+      border-radius:44% 56% 50% 50% / 44% 38% 62% 56% !important;
+    }
+
+    .mat-kamen{
+      background:linear-gradient(145deg,#cbd5e1,#94a3b8,#64748b);
+      border-radius:31% 46% 38% 52% / 44% 34% 56% 41% !important;
+      box-shadow: inset -6px -6px 10px rgba(255,255,255,.18), inset 6px 6px 10px rgba(15,23,42,.12), 0 8px 18px rgba(15,23,42,.16);
+    }
+
+    .mat-zelezo{
+      width:68px;height:58px;background:linear-gradient(145deg,#e5e7eb,#9ca3af,#6b7280);
+      border-radius:12px 12px 18px 18px !important;
+      clip-path:polygon(22% 18%, 78% 18%, 92% 38%, 92% 100%, 8% 100%, 8% 38%);
+    }
+    .mat-zelezo::before{
+      content:"";
+      position:absolute;top:-16px;left:18px;width:24px;height:20px;border:6px solid #6b7280;
+      border-bottom:none;border-radius:16px 16px 0 0;background:transparent;
     }
     .obj-shadow{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);width:90px;height:14px;border-radius:50%;background:rgba(15,23,42,.15);filter:blur(3px);transition:opacity .8s ease;opacity:0;z-index:3}
     .bubble{position:absolute;bottom:44px;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.8);animation:rise 5s linear infinite;z-index:3}
@@ -76,10 +156,23 @@
     button:hover{transform:translateY(-1px);background:#bae6fd}
     .multi-wrap{margin-top:18px;background:linear-gradient(180deg,#f0f9ff,#ecfeff);border:3px solid #7dd3fc;border-radius:22px;padding:18px}
     .multi-title{text-align:center;font-size:20px;font-weight:bold;color:#0c4a6e;margin-bottom:12px}
-    .multi-layout{display:grid;grid-template-columns:330px 1fr;gap:18px;align-items:start}
-    .multi-tank{position:relative;width:340px;height:360px;margin:0 auto;border:5px solid #475569;border-top:8px solid #475569;border-bottom:8px solid #475569;border-radius:16px 16px 12px 12px;background:linear-gradient(180deg,#e0f2fe 0%,#7dd3fc 18%,#38bdf8 100%);overflow:hidden;box-shadow:inset 0 0 25px rgba(255,255,255,.25)}
+    .multi-layout{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}
+    .multi-tank{position:relative;width:360px;height:360px;margin:0 auto;border:5px solid #475569;border-top:8px solid #475569;border-bottom:8px solid #475569;border-radius:16px 16px 12px 12px;background:linear-gradient(180deg,#e0f2fe 0%,#7dd3fc 18%,#38bdf8 100%);overflow:hidden;box-shadow:inset 0 0 25px rgba(255,255,255,.25)}
     .multi-liquid{position:absolute;left:0;right:0;top:55px;bottom:40px;background:#38bdf8;opacity:.82;z-index:1}
-    .multi-object{position:absolute;width:44px;height:44px;border-radius:12px;border:3px solid rgba(15,23,42,.35);box-shadow:0 8px 18px rgba(15,23,42,.16);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold;text-align:center;color:#0f172a;padding:2px;z-index:4;transition:top .6s ease}
+    .multi-object{
+      position:absolute;width:46px;height:46px;border-radius:12px;border:3px solid rgba(15,23,42,.35);
+      box-shadow:0 8px 18px rgba(15,23,42,.16);display:flex;align-items:flex-end;justify-content:center;
+      font-size:10px;font-weight:bold;text-align:center;color:#0f172a;padding:2px;z-index:4;transition:top .6s ease;
+      overflow:visible;
+    }
+    .multi-object.mat-drevo{width:54px;height:28px}
+    .multi-object.mat-zelezo{width:48px;height:42px}
+    .multi-object.mat-jablko::before, .multi-object.mat-jablko::after,
+    .multi-object.mat-zelezo::before{transform-origin:center;}
+    .multi-object.mat-jablko::before{top:-6px;left:24px;width:3px;height:10px}
+    .multi-object.mat-jablko::after{top:-7px;left:27px;width:12px;height:7px}
+    .multi-object.mat-zelezo::before{top:-12px;left:10px;width:18px;height:14px;border-width:5px}
+
     .multi-waterline{position:absolute;top:55px;left:0;width:100%;height:4px;background:rgba(255,255,255,.8);z-index:3}.multi-sand{position:absolute;left:0;bottom:0;width:100%;height:40px;background:linear-gradient(180deg,#fde68a,#eab308);z-index:2}
     .legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.legend-item{background:white;border:1px solid #dbeafe;border-radius:16px;padding:11px 12px;font-size:15px;line-height:1.45}.dot{display:inline-block;width:13px;height:13px;border-radius:4px;margin-right:6px;vertical-align:middle;border:1px solid rgba(15,23,42,.25)}
     .results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -127,7 +220,7 @@
                 <div class="waterline"></div>
                 <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
                 <div class="obj-shadow" id="objShadow"></div>
-                <div class="object" id="objectBox">Těleso</div>
+                <div class="object" id="objectBox"><span class="obj-label" id="objectLabel">Těleso</span></div>
                 <div class="bottom-sand"></div>
               </div>
             </div>
@@ -252,12 +345,14 @@
                 <div class="multi-liquid" id="multiLiquid"></div>
                 <div class="water-label" id="multiLiquidLabel">VODA</div>
                 <div class="multi-waterline"></div>
-                <div class="multi-object" id="moPolystyren" style="left:12px;background:#f8fafc;">Poly<br>styren</div>
-                <div class="multi-object" id="moDrevo" style="left:66px;background:#c08457;">Dřevo</div>
-                <div class="multi-object" id="moLed" style="left:96px;background:#bfdbfe;border-radius:50%;">Led</div>
-                <div class="multi-object" id="moJablko" style="left:174px;background:#f87171;border-radius:50%;">Jablko</div>
-                <div class="multi-object" id="moKamen" style="left:198px;background:#94a3b8;">Kámen</div>
-                <div class="multi-object" id="moZelezo" style="left:248px;background:#9ca3af;border-radius:50%;">Železo</div>
+                
+                <div class="multi-object mat-polystyren" id="moPolystyren" style="left:12px;"><span class="multi-label">Polystyren</span></div>
+                <div class="multi-object mat-drevo" id="moDrevo" style="left:66px;"><span class="multi-label">Dřevo</span></div>
+                <div class="multi-object mat-led" id="moLed" style="left:96px;"><span class="multi-label">Led</span></div>
+                <div class="multi-object mat-jablko" id="moJablko" style="left:148px;"><span class="multi-label">Jablko</span></div>
+                <div class="multi-object mat-plast" id="moPlast" style="left:198px;"><span class="multi-label">Plast</span></div>
+                <div class="multi-object mat-kamen" id="moKamen" style="left:248px;"><span class="multi-label">Kámen</span></div>
+                <div class="multi-object mat-zelezo" id="moZelezo" style="left:292px;"><span class="multi-label">Železo</span></div>
                 <div class="multi-sand"></div>
               </div>
             </div>
@@ -385,6 +480,7 @@
     const massSliderValue = document.getElementById("massSliderValue");
     const volumeSliderValue = document.getElementById("volumeSliderValue");
     const objectBox = document.getElementById("objectBox");
+    const objectLabel = document.getElementById("objectLabel");
     const objShadow = document.getElementById("objShadow");
     const simTitle = document.getElementById("simTitle");
     const simDesc = document.getElementById("simDesc");
@@ -404,14 +500,14 @@
     const woodExampleBox = document.getElementById("woodExampleBox");
 
     const presets = {
-      polystyren:{ mass:40, volume:1000, density:0.04, color:"#f8fafc", label:"Polystyren" },
-      drevo:{ mass:600, volume:1000, density:0.60, color:"#c08457", label:"Dřevo" },
-      led:{ mass:920, volume:1000, density:0.92, color:"#bfdbfe", label:"Led" },
-      jablko:{ mass:800, volume:1000, density:0.80, color:"#f87171", label:"Jablko" },
-      plast:{ mass:950, volume:1000, density:0.95, color:"#fbbf24", label:"Plast" },
-      voda:{ mass:1000, volume:1000, density:1.00, color:"#38bdf8", label:"Voda" },
-      kamen:{ mass:2600, volume:1000, density:2.60, color:"#94a3b8", label:"Kámen" },
-      zelezo:{ mass:7800, volume:1000, density:7.80, color:"#9ca3af", label:"Železo" }
+      polystyren:{ mass:40, volume:1000, density:0.04, color:"#f8fafc", label:"Polystyren", cls:"mat-polystyren" },
+      drevo:{ mass:600, volume:1000, density:0.60, color:"#c08457", label:"Dřevo", cls:"mat-drevo" },
+      led:{ mass:920, volume:1000, density:0.92, color:"#bfdbfe", label:"Led", cls:"mat-led" },
+      jablko:{ mass:800, volume:1000, density:0.80, color:"#f87171", label:"Jablko", cls:"mat-jablko" },
+      plast:{ mass:950, volume:1000, density:0.95, color:"#fbbf24", label:"Plast", cls:"mat-plast" },
+      voda:{ mass:1000, volume:1000, density:1.00, color:"#38bdf8", label:"Voda", cls:"mat-voda" },
+      kamen:{ mass:2600, volume:1000, density:2.60, color:"#94a3b8", label:"Kámen", cls:"mat-kamen" },
+      zelezo:{ mass:7800, volume:1000, density:7.80, color:"#9ca3af", label:"Železo", cls:"mat-zelezo" }
     };
 
     const liquids = {
@@ -435,8 +531,8 @@
       densityInput.value = p.density;
       massSlider.value = Math.min(p.mass, massSlider.max);
       volumeSlider.value = Math.min(p.volume, volumeSlider.max);
-      objectBox.style.background = p.color;
-      objectBox.textContent = p.label;
+      objectBox.className = "object " + p.cls;
+      objectLabel.textContent = p.label;
     }
 
     function syncSliders(){
@@ -449,6 +545,7 @@
     }
 
     function setShape(shape){
+      if(presetSelect.value !== "custom") return;
       if(shape === "square") objectBox.style.borderRadius = "16px";
       else if(shape === "circle") objectBox.style.borderRadius = "50%";
       else objectBox.style.borderRadius = "28px";
@@ -457,11 +554,15 @@
     function updateObjectAppearance(){
       const presetName = presetSelect.value;
       if(presetName !== "custom" && presets[presetName]){
-        objectBox.style.background = presets[presetName].color;
-        objectBox.textContent = presets[presetName].label;
+        const p = presets[presetName];
+        objectBox.className = "object " + p.cls;
+        objectLabel.textContent = p.label;
       } else {
+        objectBox.className = "object";
+        objectBox.style.width = "84px";
+        objectBox.style.height = "84px";
         objectBox.style.background = "#f97316";
-        objectBox.textContent = "Těleso";
+        objectLabel.textContent = "Těleso";
       }
     }
 
@@ -517,6 +618,7 @@
         drevo: document.getElementById("moDrevo"),
         led: document.getElementById("moLed"),
         jablko: document.getElementById("moJablko"),
+        plast: document.getElementById("moPlast"),
         kamen: document.getElementById("moKamen"),
         zelezo: document.getElementById("moZelezo")
       };
@@ -528,7 +630,7 @@
 
       const liq = liquids[liquidSelect.value];
       multiLegend.innerHTML = "";
-      ["polystyren","drevo","led","jablko","kamen","zelezo"].forEach(key=>{
+      ["polystyren","drevo","led","jablko","plast","kamen","zelezo"].forEach(key=>{
         const p = presets[key];
         const s = getState(p.density, liquidDensity);
         const item = document.createElement("div");
